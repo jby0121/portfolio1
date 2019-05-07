@@ -1,0 +1,305 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700');
+/* reset */
+html * {
+	max-height: 9999999px;
+}
+body {
+	color: #000;
+	background-color:#fff;
+	margin:0;
+	min-width: 1000px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1.7;
+}
+img {border:none;}
+
+br	{
+	letter-spacing: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:1em;
+}
+h1, h2, h3, h4, h5, h6, div, p, dl, dt, dd, ul, ol, li, form, fieldset, blockquote, address, table, thead, tbody, tfoot, tr, td, caption {
+	margin:0;
+	padding:0;
+	font-weight: 400;
+}
+ul, ol {
+	list-style:none;
+}
+
+a {text-decoration:none; color:#000000;}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {display: block;}
+
+/*common*/
+section {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	min-height: 700px;
+	box-sizing: border-box;
+	/* border: 1px solid lime; */
+}
+h3 {
+	margin-bottom: 15px;
+	font-size: 19px;
+	font-weight: 700;
+}
+p {
+	font-size: 14px;
+}
+h2 {
+	font-size: 30px;
+	font-weight: 700;
+}
+/*intro*/
+.intro {}
+.intro .who {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	width: 410px;
+	margin: 0 auto;
+	transition: all 1s ease-in-out;
+}
+.intro.active .who {
+	opacity: 1;
+	transform: translateY(-20%);
+}
+.intro .who h1 {
+	font-size: 80px;
+	font-weight: 700;
+	text-align: center;
+}
+.intro .who p {
+	white-space: nowrap;
+	border-right: 2px solid #000;
+	margin: 0 auto;
+	display: inline-block;
+	padding-right: 5px;
+	font-size: 30px;
+	text-align: center;
+	animation: 
+    blink-caret .75s step-end infinite;  
+}
+ @keyframes blink-caret {
+	from, to { border-color: transparent}
+	50% { border-color: #000;}
+}
+.intro .background {
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+}
+.intro .background .myVideo {
+	height: 100%;
+}
+
+/* skill */
+.skill {	
+	padding: 30px 100px 0;
+	background-color: #fafafa;
+}
+.skill h2 {
+	margin-bottom: 20px;
+	font-size: 80px;
+}
+.skill ul {
+	display: grid;
+	opacity: 0;
+	row-gap: 40px;
+	column-gap: 100px;
+	transform: translateY(20%);
+	transition: all 1s ease-in-out;
+}
+.skill.active ul {
+	opacity: 1;
+	transform: translateY(0);
+}
+.skill ul li {}
+.skill ul li h3 {
+	margin-bottom: 15px;
+}
+.skill ul li .chart {
+	margin-bottom: 15px;
+	width: 100%;
+	height: 10px;
+	background-color: #fff;
+}
+.skill ul li .chart span {
+	display: block;
+	width: 0;
+	height: 100%;
+	transition: all 1s ease-in-out;
+	background: #0600ff; /* Old browsers */
+	background: -moz-linear-gradient(left, #0600ff 0%, #00fff0 63%, #00fff0 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #0600ff 0%,#00fff0 63%,#00fff0 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #0600ff 0%,#00fff0 63%,#00fff0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0600ff', endColorstr='#00fff0',GradientType=1 ); /* IE6-9 */
+}
+.skill.active ul li .chart span.bar1 {width:85%;}
+.skill.active ul li .chart span.bar2 {width:80%;}
+.skill.active ul li .chart span.bar3 {width:60%}
+.skill.active ul li .chart span.bar4 {width:50%}
+
+.skill ul li.adobe {
+	grid-column: 1 / 3;
+}
+.skill ul li.adobe .adobe_icon {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+.skill ul li.adobe .adobe_icon:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.skill ul li.adobe .adobe_icon img {
+	float: left;
+	width: 80px;
+	box-shadow: 4px 3px 3px -2px #626262;
+}
+.skill ul li.adobe .adobe_icon img+img{
+	margin-left: 100px;
+}
+
+/* portfolio */
+.portfolio {
+	/* overflow: scroll; */
+	height: 150vh;
+}
+.portfolio.alaska {z-index: 4;}
+.portfolio.coca_cola {z-index: 3;}
+.portfolio.hyundai {z-index: 2;}
+.portfolio.sm_town {z-index: 1;}
+.portfolio .section_img {
+	position: sticky;
+	position: -webkit-sticky; /* 사파리 브라우저 지원 */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+.portfolio .section_img .img_bacground {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+	background-position: center center;
+	background-size: cover;
+}
+.portfolio.alaska .section_img .img_bacground {
+	background-image: url(../images/alaska_mockup.jpg);
+}
+.portfolio.coca_cola .section_img .img_bacground {
+	background-image: url(../images/coca_mockup.jpg);
+}
+.portfolio.hyundai .section_img .img_bacground {
+	background-image: url(../images/hyundai_mockup.jpg);
+}
+.portfolio.sm_town .section_img .img_bacground {
+	background-image: url(../images/smtown_mockup.png);
+}
+.portfolio .section_img .border {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.portfolio .section_img .border div {
+	position: absolute;
+	background-color: #fff;
+}
+.portfolio .section_img .border .border_top {
+	top: 0;
+	width: 100%;
+	height: 90px;
+	transform-origin: top;
+}
+.portfolio .section_img .border .border_right {
+	right: 0;
+	width: 90px;
+	height: 100%;
+	transform-origin: right;
+}
+.portfolio .section_img .border .border_left {
+	left: 0;
+	width: 90px;
+	height: 100%;
+	transform-origin: left;
+}
+.portfolio .section_img .border .border_bottom {
+	bottom: 0;
+	width: 100%;
+	height: 90px;
+	transform-origin: bottom;
+}
+.portfolio .section_content {
+	position: absolute;
+	top: 50vh;
+	right: 100px;
+	opacity: 0;
+	padding: 60px;
+	width: 45%;
+	box-sizing: border-box;
+	transition: all 1s ease-in-out;
+	background-color: rgba(255, 255, 255, 0.9);
+	will-change: transform, opacity;
+}
+.portfolio.active .section_content {
+	opacity: 1;
+	transform: translateY(-20%);
+}
+.section_content h2.portfolio_title {margin-bottom: 25px;}
+.section_content ul.portfolio_feature {}
+.section_content ul.portfolio_feature li {margin-bottom: 20px;}
+.section_content ul.portfolio_feature li h3 {}
+.section_content ul.portfolio_feature li p {padding-left: 1em;}
+.section_content ul.portfolio_feature li p:before {
+	content: '-';
+	margin-left: -1.0em;
+	margin-right: 0.5em;
+}
+.section_content ul.portfolio_feature li p > span {color: #0605ff;}
+
+.section_content .btn_getweb {
+	display: inline-block;
+	padding: 0 35px;
+	height: 50px;
+	/* border: 1px solid #0605ff; */
+	border: 1px solid #fff;
+	border-radius: 25px;
+	/* color: #0605ff; */
+	color: #fff;
+	background-color:rgba(6, 5, 255, 0.5);
+	font-size: 17px;
+	line-height: 50px;
+	transition: all 0.5s ease-in-out;
+}
+.section_content .btn_getweb:hover {
+	/* background-color:rgba(255, 255, 255, 0.7); */
+	background-color:rgba(6, 5, 255, 1);
+}
+.section_content .btn_getweb > span {}
+
+
+
+/*footer*/
+
+
+
+
