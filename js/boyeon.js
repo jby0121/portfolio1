@@ -17,8 +17,7 @@ window.onload = function(){
 //scroll animation
     const sections = document.querySelectorAll('section');
     const htmlElem = document.querySelector("html");
-    
-    document.addEventListener("scroll", scrollWork);
+    let ticking = false;
 
     //html data속성으로 각 sections의 절대 위치를 넣기
     sections.forEach(function (element) {
@@ -27,6 +26,16 @@ window.onload = function(){
             return Math.floor(window.pageYOffset + element.getBoundingClientRect().top);
             //소수점 털어냈음
         }
+    });
+
+    window.addEventListener("scroll", function(e) {    
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          scrollWork();
+          ticking = false;
+        });
+        ticking = true;
+      } //스크롤 이벤트 최적화
     });
 
     function scrollWork (e) {
@@ -39,21 +48,19 @@ window.onload = function(){
                 scaleUp (element);
             } else {
                 element.classList.remove('active');
-                element.style.willChange = 'auto';
-                //scaleDown (element); 
+                element.style.willChange = 'auto';              
+                scaleDown (element); 
             }
+            return;
         });
                 
     }
 
 
     //portfolio의 흰색 테두리 크기를 줄이기
-    function scaleUp (target) {
-        //const border = target.querySelectorAll(".border");    
+    function scaleUp (target, cnt) {
         const borders = target.querySelectorAll(".border > div");    
-        //console.log(border);
-        //let cnt = border.dataset.borderCount;
-        //border.dataset.borderCount = cnt-1;
+
         function incScale(line){
           line.style.transform = 'scale(0,1)';
         }
@@ -63,7 +70,7 @@ window.onload = function(){
         }
         
         function incScaleOthers(line, cnt){
-          line.parentNode.dataset.borderCount = cnt-1; //x가 두개여서 두번 실행됨 그래서 0까지 못가고 0.2에서 멈추는듯.
+          line.parentNode.dataset.borderCount = cnt*1-1;
           line.style.transform = 'scale(' + (cnt/100) + ',1)';
         }
         
@@ -82,49 +89,35 @@ window.onload = function(){
       }
 
 
-    
-    // //portfolio의 흰색 테두리 크기를 줄이기
-    // function scaleUp (target) {
-    //     //const border = target.querySelectorAll(".border");    
-    //     const borders = target.querySelectorAll(".border > div");    
-    //     //console.log(border);
-    //     //let cnt = border.dataset.borderCount;
-    //     //border.dataset.borderCount = cnt-1;
-    //     borders.forEach(function(line){
-    //         let cnt = line.parentNode.dataset.borderCount;
-    //         if (cnt/100 < 0.02) {
-    //             if (line.dataset.scale == 'x') {
-    //                 line.style.transform = 'scale(0,1)';
-    //             } 
-    //             if (line.dataset.scale === 'y') {
-    //                 line.style.transform = 'scale(1,0)';
-    //             } 
-    //             return;
-    //         }
-    //         if (line.dataset.scale == 'x') {
-    //             line.parentNode.dataset.borderCount = cnt-1; //x가 두개여서 두번 실행됨 그래서 0까지 못가고 0.2에서 멈추는듯.
-    //             line.style.transform = 'scale(' + (cnt/100) + ',1)';
-    //         } 
-    //         if (line.dataset.scale === 'y') {
-    //             line.style.transform = 'scale(1,' + (cnt/100) + ')';
-    //         } 
-    //     });
-    // }
-
     //portfolio의 흰색 테두리 크기를 늘이기
-    // function scaleDown (target) {
-    //     var borders = target.querySelectorAll(".border > div");
-    //     borders.forEach(function(line){
-    //         let cnt = line.parentNode.dataset.borderCount;
-    //         line.parentNode.dataset.borderCount = cnt+1;
-    //         // if (cnt < 90 && line.dataset.scale == 'x') {
-    //         //     line.style.transform = 'scale(' + (cnt/100) + ',1)';
-    //         // } 
-    //         // if (cnt < 90 && border.dataset.scale === 'y') {
-    //         //     line.style.transform = 'scale(1,' + (cnt/100) + ')';
-    //         //     line.parentNode.dataset.borderCount = cnt+1;
-    //         // } 
-    //     });
-    // }
+    function scaleDown (target) {
+      const borders = target.querySelectorAll(".border > div");    
 
+      function incScale(line){
+        line.style.transform = 'scale(1,1)';
+      }
+      
+      function decScale(line){
+        line.style.transform = 'scale(1,1)';
+      }
+      
+      function incScaleOthers(line, cnt){ 
+        line.parentNode.dataset.borderCount = cnt*1+1;
+        line.style.transform = 'scale(' + (cnt/100) + ',1)';
+        
+      }
+      
+      function decScaleOthers(line, cnt){
+        line.style.transform = 'scale(1,' + (cnt/100) + ')';
+      }
+      
+      borders.forEach(function(line){   
+        let cnt = line.parentNode.dataset.borderCount;
+        if (cnt/100 > 0.98) {
+          line.dataset.scale == 'x' ? incScale(line) : decScale(line);
+          return cnt = 100;
+        }
+        line.dataset.scale == 'x' ? incScaleOthers(line, cnt) : decScaleOthers(line, cnt);
+      });
+    }
 }

@@ -64,7 +64,7 @@ h2 {
 .intro {}
 .intro .who {
 	position: absolute;
-	top: 100px;
+	top: 200px;
 	left: 0;
 	right: 0;
 	opacity: 0;
@@ -75,6 +75,10 @@ h2 {
 .intro.active .who {
 	opacity: 1;
 	transform: translateY(-20%);
+	-webkit-transform: translateY(-20%); /* 크롬, 사파리 */
+	-moz-transform: translateY(-20%);    /* 파이어폭스 */
+	-ms-transform: translateY(-20%);      /* 익스플로러 */
+	-o-transform: translateY(-20%);        /* 오페라 */
 }
 .intro .who h1 {
 	font-size: 80px;
@@ -102,7 +106,7 @@ h2 {
 	height: 100vh;
 }
 .intro .background .myVideo {
-	height: 100%;
+	min-height: 100%;
 }
 
 /* skill */
@@ -120,11 +124,19 @@ h2 {
 	row-gap: 40px;
 	column-gap: 100px;
 	transform: translateY(20%);
+	-webkit-transform: translateY(20%); /* 크롬, 사파리 */
+	-moz-transform: translateY(20%);    /* 파이어폭스 */
+	-ms-transform: translateY(20%);      /* 익스플로러 */
+	-o-transform: translateY(20%);        /* 오페라 */
 	transition: all 1s ease-in-out;
 }
 .skill.active ul {
 	opacity: 1;
 	transform: translateY(0);
+	-webkit-transform: translateY(0); /* 크롬, 사파리 */
+	-moz-transform: translateY(0);    /* 파이어폭스 */
+	-ms-transform: translateY(0);      /* 익스플로러 */
+	-o-transform: translateY(0);        /* 오페라 */
 }
 .skill ul li {}
 .skill ul li h3 {
@@ -229,24 +241,42 @@ h2 {
 	width: 100%;
 	height: 90px;
 	transform-origin: top;
+	-webkit-transform-origin: top; /* 크롬, 사파리 */
+	-moz-transform-origin: top;    /* 파이어폭스 */
+	-ms-transform-origin: top;      /* 익스플로러 */
+	-o-transform-origin: top;        /* 오페라 */
 }
 .portfolio .section_img .border .border_right {
 	right: 0;
 	width: 90px;
 	height: 100%;
 	transform-origin: right;
+	-webkit-transform-origin: right; /* 크롬, 사파리 */
+	-moz-transform-origin: right;    /* 파이어폭스 */
+	-ms-transform-origin: right;      /* 익스플로러 */
+	-o-transform-origin: right;        /* 오페라 */
 }
 .portfolio .section_img .border .border_left {
 	left: 0;
 	width: 90px;
 	height: 100%;
 	transform-origin: left;
+	-webkit-transform-origin: left; /* 크롬, 사파리 */
+	-moz-transform-origin: left;    /* 파이어폭스 */
+	-ms-transform-origin: left;      /* 익스플로러 */
+	-o-transform-origin: left;        /* 오페라 */
+	
 }
 .portfolio .section_img .border .border_bottom {
 	bottom: 0;
 	width: 100%;
 	height: 90px;
 	transform-origin: bottom;
+	-webkit-transform-origin: bottom; /* 크롬, 사파리 */
+	-moz-transform-origin: bottom;    /* 파이어폭스 */
+	-ms-transform-origin: bottom;      /* 익스플로러 */
+	-o-transform-origin: bottom;        /* 오페라 */
+	
 }
 .portfolio .section_content {
 	position: absolute;
@@ -263,6 +293,10 @@ h2 {
 .portfolio.active .section_content {
 	opacity: 1;
 	transform: translateY(-20%);
+	-webkit-transform: translateY(-20%); /* 크롬, 사파리 */
+	-moz-transform: translateY(-20%);    /* 파이어폭스 */
+	-ms-transform: translateY(-20%);      /* 익스플로러 */
+	-o-transform: translateY(-20%);        /* 오페라 */
 }
 .section_content h2.portfolio_title {margin-bottom: 25px;}
 .section_content ul.portfolio_feature {}
@@ -280,10 +314,8 @@ h2 {
 	display: inline-block;
 	padding: 0 35px;
 	height: 50px;
-	/* border: 1px solid #0605ff; */
 	border: 1px solid #fff;
 	border-radius: 25px;
-	/* color: #0605ff; */
 	color: #fff;
 	background-color:rgba(6, 5, 255, 0.5);
 	font-size: 17px;
@@ -291,7 +323,6 @@ h2 {
 	transition: all 0.5s ease-in-out;
 }
 .section_content .btn_getweb:hover {
-	/* background-color:rgba(255, 255, 255, 0.7); */
 	background-color:rgba(6, 5, 255, 1);
 }
 .section_content .btn_getweb > span {}
