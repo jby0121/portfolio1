@@ -64,7 +64,7 @@ h2 {
 .intro {}
 .intro .who {
 	position: absolute;
-	top: 200px;
+	top: 150px;
 	left: 0;
 	right: 0;
 	opacity: 0;
@@ -106,6 +106,7 @@ h2 {
 	height: 100vh;
 }
 .intro .background .myVideo {
+	min-width: 100%;
 	min-height: 100%;
 }
 
